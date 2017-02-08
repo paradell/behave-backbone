@@ -1,2 +1,2 @@
 test:
-	lettuce testSuite
+	behave testSuite
