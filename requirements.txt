@@ -1,0 +1,14 @@
+# Format Accepted:
+# Only is accepted # in the begin of the line to comment.
+# For git expresions you must use # to specify dependency of RPM
+#       Example: git+ssh://github.com/behave/behave/tree/v1.2.5
+# For rpm dependecy use a #:rpm
+#		Example #rpm:requests == 0.13.2
+# Please only use strict (==) dependencies, as >= are error prone
+
+# BDD
+behave == 1.2.5
+pyshould == 0.6.2
+
+# Python
+requests == 2.13.0
