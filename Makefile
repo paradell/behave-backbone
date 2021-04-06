@@ -1,4 +1,4 @@
-VENV_PATH  := .behave_venv
+VENV_PATH  := .venv
 
 all: clean_virtualenv create_virtualenv activate_virtualenv install_requirements
 
