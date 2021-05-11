@@ -1,5 +1,5 @@
 from behave import *
-
+from datetime import datetime
 
 @given('a user not registered in GitHub')
 def user_not_registered(context):

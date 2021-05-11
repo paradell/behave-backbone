@@ -1,5 +1,4 @@
 from behave import *
-from datetime import datetime
 
 @when('the user tries to get the repositories of {user:w} user')
 def get_user_repositories(context, user):
