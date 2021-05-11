@@ -1,5 +1,5 @@
 import requests
-from config_util import BDD_config
+from .config_util import BDD_config
 
 
 class GitHubApiClient(object):
@@ -7,12 +7,17 @@ class GitHubApiClient(object):
     Define all API calls in this class using requests
     """
 
-    def __init__(self):
+    def __init__(self, env='PRO'):
         self.config = BDD_config().get_config_map()
+        self.env = env
 
     @property
     def url(self):
-        return self.config['API']['url']
+        return self.config[self.env]['url']
+
+    @property
+    def headers(self):
+        return {'Accept': self.config[self.env]}
 
     def get_repositories(self, user, **kwargs):
         """

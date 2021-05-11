@@ -6,7 +6,7 @@ clean_virtualenv:
 	rm -rf $(VENV_PATH)
 
 create_virtualenv:
-	virtualenv $(VENV_PATH)
+	python3 -m venv $(VENV_PATH)
 
 activate_virtualenv:
 	@echo "run manually: 'source $(VENV_PATH)/bin/activate'"

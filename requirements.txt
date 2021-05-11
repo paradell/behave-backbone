@@ -7,8 +7,9 @@
 # Please only use strict (==) dependencies, as >= are error prone
 
 # BDD
-behave == 1.2.5
-pyshould == 0.6.2
+behave == 1.2.6
+pyshould == 0.7.1
 
 # Python
-requests == 2.20.0
+requests == 2.25.1
+configparser == 5.0.2
