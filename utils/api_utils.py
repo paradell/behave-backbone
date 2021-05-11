@@ -45,3 +45,13 @@ class GitHubApiClient(object):
                             headers=self.headers,
                             auth=self.basic_auth(user=user,
                                                  token=token))
+
+    def create_repository(self, repository_details):
+        """
+        Creates a new repository based on the configuration details stored in context.repo_details
+        """
+
+        return requests.post(url=self.url + '/user/repos',
+                             headers=self.headers,
+                             auth=self.basic_auth(),
+                             data=repository_details)
