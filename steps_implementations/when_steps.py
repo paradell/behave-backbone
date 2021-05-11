@@ -14,7 +14,7 @@ def get_own_profile(context):
                                                    token=context.token)
 
 
-@when('the user defines a new {privacy:w} repository details for personal use')
+@step('the user defines a new {privacy:w} repository details for personal use')
 def define_new_repository_details(context, privacy):
     context.repo_details = dict()
     context.repo_details['name'] = 'test_repo'
@@ -22,7 +22,7 @@ def define_new_repository_details(context, privacy):
     context.repo_details['description'] = f'This is a {privacy} repo for test purposes'
 
 
-@when('the user creates a new repository')
+@step('the user creates a new repository')
 def create_repository(context):
     context.response = context.api.create_repository(repository_details=context.repo_details)
 

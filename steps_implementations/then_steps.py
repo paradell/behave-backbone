@@ -118,3 +118,5 @@ def check_create_repository_response_details(context):
     create_repository = context.response.json()
 
     create_repository['name'] | should.be_equal(context.repo_details['name'])
+    create_repository['description'] | should.be_equal(context.repo_details['description'])
+    create_repository['private'] | should.be_equal(context.repo_details['private'])
