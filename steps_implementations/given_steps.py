@@ -14,8 +14,9 @@ def user_registered(context):
 @given('the user has a correct authentication token')
 def user_with_correct_token(context):
     # Do not override the user name
-    pass
+    context.token = None
 
 @given('the user has an incorrect authentication token')
 def user_with_incorrect_token(context):
+    # Set context token as an incorrect one to override the one in configuration
     context.token = 'incorrect_token'

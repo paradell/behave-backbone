@@ -12,6 +12,6 @@ Feature: To access some of the github API resources, a github user have to be au
 
   Scenario: A Github user with an incorrect token is not able to authenticate into Github API
     Given a registered github user
-    And the user has a correct authentication token
+    And the user has an incorrect authentication token
     When the user accesses into its own profile
     Then the api response is a 401 code
