@@ -20,3 +20,11 @@ def user_with_correct_token(context):
 def user_with_incorrect_token(context):
     # Set context token as an incorrect one to override the one in configuration
     context.token = 'incorrect_token'
+
+
+@given('the user defines a new {privacy:w} repository details for personal use')
+def define_new_repository_details(context, privacy):
+    context.repo_details = dict()
+    context.repo_details['name'] = f'test_repo_{datetime.now().strftime("%Y%m%d%H%M%S")}'
+    context.repo_details['private'] = True if privacy == 'private' else False
+    context.repo_details['description'] = f'This is a {privacy} repo for test purposes'

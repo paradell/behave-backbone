@@ -1,5 +1,5 @@
 from behave import *
-
+from datetime import datetime
 
 @when('the user tries to get the repositories of {user:w} user')
 def get_user_repositories(context, user):
@@ -12,14 +12,6 @@ def get_own_profile(context):
     # make a GET call to https://api.github.com/user
     context.response = context.api.get_own_profile(user=context.user,
                                                    token=context.token)
-
-
-@step('the user defines a new {privacy:w} repository details for personal use')
-def define_new_repository_details(context, privacy):
-    context.repo_details = dict()
-    context.repo_details['name'] = 'test_repo'
-    context.repo_details['private'] = True if privacy == 'private' else False
-    context.repo_details['description'] = f'This is a {privacy} repo for test purposes'
 
 
 @step('the user creates a new repository')
