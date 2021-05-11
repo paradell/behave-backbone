@@ -48,10 +48,19 @@ class GitHubApiClient(object):
 
     def create_repository(self, repository_details):
         """
-        Creates a new repository based on the configuration details stored in context.repo_details
+        Creates a new repository based on the configuration details stored in repository_details dict
         """
 
         return requests.post(url=self.url + '/user/repos',
                              headers=self.headers,
                              auth=self.basic_auth(),
                              json=repository_details)
+
+    def delete_repository(self, repository_name):
+        """
+        Deletes the {repository_details} repository
+        """
+
+        return requests.delete(url=self.url + '/repos/'+ self.user + '/' + repository_name,
+                             headers=self.headers,
+                             auth=self.basic_auth())

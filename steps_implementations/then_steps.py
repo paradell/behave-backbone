@@ -111,3 +111,10 @@ def check_repository_details(context):
             "watchers": should.be_an_integer(),
             "default_branch": should.be_a_string()
           })
+
+
+@then('the repository creation response shows the correct details')
+def check_create_repository_response_details(context):
+    create_repository = context.response.json()
+
+    create_repository['name'] | should.be_equal(context.repo_details['name'])

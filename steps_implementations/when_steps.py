@@ -16,12 +16,17 @@ def get_own_profile(context):
 
 @when('the user defines a new {privacy:w} repository details for personal use')
 def define_new_repository_details(context, privacy):
-    context.repo_details = {'name': 'test_repo'}
-    #context.repo_details['name'] = 'test_repo'
-    #context.repo_details['private'] = True if privacy == 'private' else False
-    #context.repo_details['description'] = f'This is a {privacy} repo for test purposes'
+    context.repo_details = dict()
+    context.repo_details['name'] = 'test_repo'
+    context.repo_details['private'] = True if privacy == 'private' else False
+    context.repo_details['description'] = f'This is a {privacy} repo for test purposes'
 
 
 @when('the user creates a new repository')
 def create_repository(context):
     context.response = context.api.create_repository(repository_details=context.repo_details)
+
+
+@when('the user deletes one of its repositories')
+def delete_repository(context):
+    context.response = context.api.delete_repository(repository_name=context.repo_details['name'])
