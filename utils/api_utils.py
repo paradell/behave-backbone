@@ -54,4 +54,4 @@ class GitHubApiClient(object):
         return requests.post(url=self.url + '/user/repos',
                              headers=self.headers,
                              auth=self.basic_auth(),
-                             data=repository_details)
+                             json=repository_details)
