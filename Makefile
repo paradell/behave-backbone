@@ -1,32 +1,23 @@
-# Ophen Test Assignment
+VENV_PATH  := .venv
 
-This is a test assignment for Ophen Automation Test vacancy
+all: clean_virtualenv create_virtualenv activate_virtualenv install_requirements
 
-## Goals of this assignment
-Create automated tests for the GitHub API.
+clean_virtualenv:
+	rm -rf $(VENV_PATH)
 
-## How to set up the environment
-Before setting up the environment, make sure your machine has installed:
-* Python3
-* Pip
-* Virtualenv
+create_virtualenv:
+	virtualenv $(VENV_PATH)
 
-Everything is scripted in the Makefile to ease the process.
+activate_virtualenv:
+	@echo "run manually: 'source $(VENV_PATH)/bin/activate'"
+	@echo "And then run 'make install_requirements'"
+	exit 1
 
-1. Set up the virtual environment
-```make create_virtualenv```
-or run manually
-```python3 -m venv .venv```
+install_requirements:
+	$(VENV_PATH)/bin/python3 -m pip install -r requirements.txt
 
-2. Install requirements
-```make install_requirements```
+test_pro:
+	behave testSuite  --tags=~@skip --junit --define env=PRO
 
-3. Activate the virtualenv (this is not possible to do by running make commands)
-```source .venv/bin/activate```
-
-## Run the tests
-This automated tests run using behave, and it can be used to run it against the production environment of Github API or the deprecated one.
-```make test_pro```
-```make test_deprecated```
-
-This will run all the tests without the "skip" tag and store the oputput JUnit results in a XML file that can be used to present properly the results.
+test_deprecated:
+	behave testSuite  --tags=~@skip --junit --define env=DEPRECATED
